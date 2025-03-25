@@ -1,7 +1,5 @@
 ## Sequential Feature Selection for Neural Rankers in Learning to Rank
 
-## Experimental Setup and Execution
-
 ### Prerequisites
 Ensure all required dependencies are installed.
 
