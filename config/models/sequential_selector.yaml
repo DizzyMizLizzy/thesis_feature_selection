@@ -1,0 +1,21 @@
+trained_fold: Neural/sequential_selector
+model_name: seq_${models.num_layers}
+
+hidden_dim: 64
+num_layers: 2
+max_steps: 5
+exploration_epochs: 10
+sparsity_weight: 0.01
+
+model:
+  _target_: models.sequential_selector.SequentialSelector
+  hparams:
+    input_dim: ${datasets.input_dim}
+    hidden_dim: ${models.hidden_dim}
+    num_layers: ${models.num_layers}
+    output_dim: 1
+    max_steps: ${models.max_steps}
+    train_mode: listwise
+    rank_loss: cross_entropy
+    exploration_epochs: ${models.exploration_epochs}
+    sparsity_weight: ${models.sparsity_weight}

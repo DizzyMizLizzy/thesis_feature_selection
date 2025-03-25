@@ -1,0 +1,11 @@
+input_dim: 46
+trained_fold: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Trained/MQ2008/Fold1
+pairs_h5: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/train_pairs.h5
+train_h5: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/train.h5
+valid_h5: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/valid.h5
+valid_group: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/valid_query_group.pkl
+test_h5: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/test.h5
+test_group: /Users/alexhe/Desktop/NeuralFeatureSelectionLTR-main/Datasets/MQ2008/Fold1/test_query_group.pkl
+normalize: True
+noise: False
+y_scale: 4

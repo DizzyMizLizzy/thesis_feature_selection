@@ -1,0 +1,17 @@
+trained_fold: Neural/predictor
+model_name: linear_${models.num_layers}
+
+hidden_dim: 256
+num_layers: 4
+type: linear
+
+model:
+  _target_: models.predictor.Predictor
+  hparams:
+    predictor: linear
+    input_dim: ${datasets.input_dim}
+    hidden_dim: ${models.hidden_dim}
+    num_layers: ${models.num_layers}
+    output_dim: ${output_dim}
+    train_mode: ${train_mode.mode}
+    rank_loss: ${rank_loss}

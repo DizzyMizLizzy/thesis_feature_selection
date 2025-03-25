@@ -1,0 +1,11 @@
+input_dim: 136
+trained_fold: your-project-path/Trained/Web30k/Fold1
+pairs_h5: your-project-path/Datasets/Web30k/Fold1/train_pairs.h5
+train_h5: your-project-path/Datasets/Web30k/Fold1/train.h5
+valid_h5: your-project-path/Datasets/Web30k/Fold1/valid.h5
+valid_group: your-project-path/Datasets/Web30k/Fold1/valid_query_group.pkl
+test_h5: your-project-path/Datasets/Web30k/Fold1/test.h5
+test_group: your-project-path/Datasets/Web30k/Fold1/test_query_group.pkl
+normalize: True
+noise: False
+y_scale: 4

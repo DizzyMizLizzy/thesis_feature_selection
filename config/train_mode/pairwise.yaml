@@ -1,0 +1,54 @@
+rank_loss: max_margin
+mode: pairwise
+
+train_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 200
+  num_workers: 16
+  shuffle: True 
+  dataset:
+    _target_: data_torch.PairwiseTrainingset
+    args:
+      pairs_h5: ${datasets.pairs_h5}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${datasets.trained_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      global_mask_ratio: ${global_mask_ratio}  
+      normalize_y: False
+      y_scale: ${datasets.y_scale}
+
+valid_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 16
+  shuffle: False
+  dataset: 
+    _target_: data_torch.Validset
+    args:
+      data_h5: ${datasets.valid_h5}
+      group_pkl: ${datasets.valid_group}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${datasets.trained_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      global_mask_ratio: ${global_mask_ratio}  
+
+test_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 16
+  shuffle: False
+  dataset: 
+    _target_: data_torch.Validset
+    args:
+      data_h5: ${datasets.test_h5}
+      group_pkl: ${datasets.test_group}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${datasets.trained_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      global_mask_ratio: ${global_mask_ratio}  

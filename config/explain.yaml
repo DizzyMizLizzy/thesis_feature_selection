@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - models: predictor
+  - datasets: MQ2008
+  - train_mode: listwise
+
+# Testing settings
+global_mask: None
+global_mask_ratio: 0
+mask_dir: None
+mask_file: feature_importances.json
+random_seed: 123
+is_lassonet: False
+
+# Device settings
+device: mps  # Options: [cpu, cuda, mps]
+gpus: 0
+
+# Model settings
+rank_loss: ${train_mode.rank_loss}
+output_dim: 1
+test_result: test_results.json
+version: 0
+checkpoint_path: ${datasets.trained_fold}/${train_mode.mode}/${models.trained_fold}/${models.model_name}/lightning_logs/version_${version}/checkpoints/
+
+
+

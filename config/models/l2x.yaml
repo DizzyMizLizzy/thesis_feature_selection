@@ -1,0 +1,20 @@
+trained_fold: Neural/L2X
+model_name: ${models.model.hparams.critic}_${models.model.hparams.feature_ratio}
+type: local
+model:
+  _target_: models.L2X.L2XRanker
+  hparams:
+    actor: linear
+    critic: linear
+    temperature: 0.1
+    feature_ratio: ???
+    train_mode: ${train_mode.mode}
+    rank_loss: ${rank_loss}
+    straight_through: False
+    sparsemax: False
+    input_dim: ${datasets.input_dim}
+    output_dim: ${output_dim}
+    hidden_dim: 256
+    num_layers: 4
+
+    

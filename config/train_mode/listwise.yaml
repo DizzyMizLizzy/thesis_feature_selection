@@ -1,0 +1,68 @@
+rank_loss: cross_entropy
+mode: listwise
+mask_fold: ${datasets.trained_fold}/listwise/${mask_dir}/lightning_logs/version_${version}/checkpoints/
+
+train_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 128
+  num_workers: 4
+  persistent_workers: True
+  prefetch_factor: 2
+  pin_memory: True
+  shuffle: True 
+  dataset:
+    _target_: data_torch.ListwiseTrainingset
+    args:
+      data_h5: ${datasets.train_h5}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${train_mode.mask_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      mask_file: ${mask_file}
+      global_mask_ratio: ${global_mask_ratio}  
+      normalize_y: False
+      y_scale: ${datasets.y_scale}
+
+
+valid_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 2
+  persistent_workers: True
+  prefetch_factor: 2
+  pin_memory: True
+  shuffle: False
+  dataset: 
+    _target_: data_torch.Validset
+    args:
+      data_h5: ${datasets.valid_h5}
+      group_pkl: ${datasets.valid_group}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${train_mode.mask_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      mask_file: ${mask_file}
+      global_mask_ratio: ${global_mask_ratio}  
+
+test_loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 2
+  persistent_workers: True
+  prefetch_factor: 2
+  pin_memory: True
+  shuffle: False
+  dataset: 
+    _target_: data_torch.Validset
+    args:
+      data_h5: ${datasets.test_h5}
+      group_pkl: ${datasets.test_group}
+      normalize: ${datasets.normalize}
+      noise: ${datasets.noise}
+      trained_fold: ${train_mode.mask_fold}
+      input_dim: ${datasets.input_dim}
+      global_mask: ${global_mask}
+      mask_file: ${mask_file}
+      global_mask_ratio: ${global_mask_ratio}  

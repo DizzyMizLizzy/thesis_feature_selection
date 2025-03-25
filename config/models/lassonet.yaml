@@ -1,0 +1,30 @@
+trained_fold: Neural/lassonet
+model_name: ${models.model.hparams.predictor}_${models.model.hparams.path_multiplier}_${random_seed}
+is_lassonet: True
+type: global
+model:
+  _target_: models.lassonet.LassonetPath
+  hparams:
+    predictor: linear 
+    gamma: 0
+    gamma_skip: 0
+    lambda_start: 0
+    path_multiplier: 1.02
+    M: 10
+    lambda_: 0
+    path_depth: 100
+    path_max_epoch: 4
+    path_patience: 2
+    gpu: ${gpus}
+    recover_version: -1
+    train_mode: ${train_mode.mode}
+    rank_loss: ${rank_loss}
+    default_root_dir: ${datasets.trained_fold}/${train_mode.mode}/${models.trained_fold}/${models.model_name}
+
+    
+
+  hparams_dec:
+    input_dim: ${datasets.input_dim}
+    output_dim: ${output_dim}
+    hidden_dim: 256
+    num_layers: 4

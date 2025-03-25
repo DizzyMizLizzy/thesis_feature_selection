@@ -1,0 +1,21 @@
+trained_fold: Neural/tabnet
+model_name: tabnet_${models.model.hparams.n_steps}_${models.model.hparams.lambda_sparse}
+type: local
+model:
+  _target_: models.tabnet.TabnetRanker
+  hparams:
+    n_d: 128
+    n_a: 128
+    n_steps: 4
+    n_independent: 2
+    n_shared: 2
+    virtual_batch_size: 128
+    momentum: 0.02
+    gamma: 1.3
+    lambda_sparse: 0.01
+    mask_type: sparsemax
+    input_dim: ${datasets.input_dim}
+    output_dim: ${output_dim}
+    rank_loss: ${rank_loss}
+    train_mode: ${train_mode.mode}
+  

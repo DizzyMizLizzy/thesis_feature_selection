@@ -1,0 +1,12 @@
+input_dim: 699
+trained_fold: your-project-path/Trained/Yahoo/Fold1
+pairs_h5: your-project-path/Datasets/Yahoo/Fold1/train_pairs.h5
+train_h5: your-project-path/Datasets/Yahoo/Fold1/train.h5
+valid_h5: your-project-path/Datasets/Yahoo/Fold1/valid.h5
+valid_group: your-project-path/Datasets/Yahoo/Fold1/valid_query_group.pkl
+test_h5: your-project-path/Datasets/Yahoo/Fold1/test.h5
+test_group: your-project-path/Datasets/Yahoo/Fold1/test_query_group.pkl
+normalize: False
+noise: False
+y_scale: 4
+

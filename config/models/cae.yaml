@@ -1,0 +1,19 @@
+trained_fold: Neural/CAE
+model_name: ${models.model.hparams.predictor}_${models.model.hparams.feature_ratio}
+type: global
+model:
+  _target_: models.concrete_autoencoder.ConcreteAutoEncoder
+  hparams:
+    predictor: linear
+    input_dim: ${datasets.input_dim}
+    output_dim: ${output_dim}
+    start_temp: 10.0
+    min_temp: 0.01
+    supervise: True
+    feature_ratio: ???
+    train_mode: ${train_mode.mode}
+    rank_loss: ${rank_loss}
+    num_layers: 4
+    predictor_hidden: 256
+
+

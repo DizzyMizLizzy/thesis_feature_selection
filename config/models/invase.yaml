@@ -1,0 +1,17 @@
+trained_fold: Neural/invase
+model_name: ${models.model.hparams.critic}_${models.model.hparams.lamda}
+type: local
+model:
+  _target_: models.invase.InvaseRanker
+  hparams:
+    actor: linear
+    critic: linear
+    lamda: 0.1
+    train_mode: ${train_mode.mode}
+    rank_loss: ${rank_loss}
+    input_dim: ${datasets.input_dim}
+    output_dim: ${output_dim}
+    hidden_dim: 256
+    num_layers: 4
+
+    
